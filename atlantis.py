@@ -64,7 +64,7 @@ class Atlantis:
     def __init__(self, bot):
         self.state = {}
         self.options = []
-        self.choices = {}
+        self.choices = []
         self.messages = []
         self.bot = bot
         self.locale = en
@@ -77,7 +77,7 @@ class Atlantis:
 
     async def typing(self, message):
         'Delay based on message length.'
-        delay = min(max(2, len(message) / 40), 5)
+        delay = min(max(1.5, len(message) / 50), 4.0)
         if not self.fast:
             await self.bot.send_chat_action(action='typing')
             await sleep(delay)
