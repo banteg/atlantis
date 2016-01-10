@@ -5,7 +5,7 @@ from collections import defaultdict
 from aiotg import TgBot
 
 from secrets import token
-from atlantis_translations import en, ru
+from atlantis.translations import en, ru
 
 
 bot = TgBot(token)
