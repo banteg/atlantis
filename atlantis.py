@@ -87,7 +87,6 @@ class Atlantis:
         keyboard = {
             'keyboard': [[choice] for choice in self.choices],
             'resize_keyboard': True,
-            'one_time_keyboard': True,
         }
 
         while len(self.messages) > 1:
