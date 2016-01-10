@@ -75,14 +75,12 @@ class Atlantis:
         lines = [x for x in self.locale[text].split('\n\n') if x.strip()]
         self.messages.extend(lines)
 
-    async def send_slow(self, message, **kwds):
-        'Send a message with a delay based on its length.'
+    async def typing(self, message):
+        'Delay based on message length.'
         delay = min(max(2, len(message) / 40), 5)
         if not self.fast:
-            await self.bot.send_text(message, **kwds)
-            if 'reply_markup' not in kwds:
-                await self.bot.send_chat_action(action='typing')
-                await sleep(delay)
+            await self.bot.send_chat_action(action='typing')
+            await sleep(delay)
 
     async def flush(self):
         'Send all pending messages and a reply keyboard.'
@@ -94,11 +92,13 @@ class Atlantis:
 
         while len(self.messages) > 1:
             message = self.messages.pop(0)
-            await self.send_slow(message)
+            await self.typing(message)
+            await self.bot.send_text(message)
 
         if self.messages:
             message = self.messages.pop(0)
-            await self.send_slow(message, reply_markup=json.dumps(keyboard))
+            await self.typing(message)
+            await self.bot.send_text(message, reply_markup=json.dumps(keyboard))
 
     def choose(self, choice):
         'Advance the story based on a choice.'
