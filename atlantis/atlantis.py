@@ -4,11 +4,11 @@ from collections import defaultdict
 
 from aiotg import TgBot
 
-from secrets import token
+from secrets import token, botan
 from atlantis.translations import en, ru
 
 
-bot = TgBot(token)
+bot = TgBot(token, botan_token=botan)
 users = defaultdict(dict)
 
 
