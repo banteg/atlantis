@@ -348,62 +348,42 @@ class Atlantis:
                 {'next': 'Atl_Bow', 'text': 'Ln0444.0.option.BowBeforeTheKing'},
             ]
 
-        if jump == 'Atl_Bow' and 'ClassFarmer' in self.state:
-            self.say('Ln0461.0.text.NoDoNotBowMy')
+        if jump == 'Atl_Bow':
+            if 'ClassFarmer' in self.state:
+                self.say('Ln0461.0.text.NoDoNotBowMy')
+
+            if 'ClassMagician' in self.state:
+                self.say('Ln0473.0.text.NoDoNotBowMy')
+
+            if 'ClassPhysician' in self.state:
+                self.say('Ln0485.0.text.NoDoNotBowMy')
+
+            if 'ClassPoet' in self.state:
+                self.say('Ln0497.0.text.NoDoNotBowMy')
+
+            if 'ClassScientist' in self.state:
+                self.say('Ln0509.0.text.NoDoNotBowMy')
+
             self.options = [
                 {'next': 'Atl_Scroll', 'text': 'Ln0468.0.option.ReadScroll'},
             ]
 
-        if jump == 'Atl_Bow' and 'ClassMagician' in self.state:
-            self.say('Ln0473.0.text.NoDoNotBowMy')
-            self.options = [
-                {'next': 'Atl_Scroll', 'text': 'Ln0468.0.option.ReadScroll'},
-            ]
+        if jump == 'Atl_Scroll':
+            if 'ClassFarmer' in self.state:
+                self.say('Ln0521.0.text.YouReadTheScrollWith')
 
-        if jump == 'Atl_Bow' and 'ClassPhysician' in self.state:
-            self.say('Ln0485.0.text.NoDoNotBowMy')
-            self.options = [
-                {'next': 'Atl_Scroll', 'text': 'Ln0468.0.option.ReadScroll'},
-            ]
+            if 'ClassMagician' in self.state:
+                self.say('Ln0533.0.text.YouReadTheScrollWith')
 
-        if jump == 'Atl_Bow' and 'ClassPoet' in self.state:
-            self.say('Ln0497.0.text.NoDoNotBowMy')
-            self.options = [
-                {'next': 'Atl_Scroll', 'text': 'Ln0468.0.option.ReadScroll'},
-            ]
+            if 'ClassPhysician' in self.state:
+                self.say('Ln0545.0.text.YouReadTheScrollWith')
 
-        if jump == 'Atl_Bow' and 'ClassScientist' in self.state:
-            self.say('Ln0509.0.text.NoDoNotBowMy')
-            self.options = [
-                {'next': 'Atl_Scroll', 'text': 'Ln0468.0.option.ReadScroll'},
-            ]
+            if 'ClassPoet' in self.state:
+                self.say('Ln0557.0.text.YouReadTheScrollWith')
 
-        if jump == 'Atl_Scroll' and 'ClassFarmer' in self.state:
-            self.say('Ln0521.0.text.YouReadTheScrollWith')
-            self.options = [
-                {'next': 'Atl_Confirm', 'text': 'Ln0528.0.option.ConfirmTheTruth'},
-            ]
+            if 'ClassScientist' in self.state:
+                self.say('Ln0569.0.text.YouReadTheScrollWith')
 
-        if jump == 'Atl_Scroll' and 'ClassMagician' in self.state:
-            self.say('Ln0533.0.text.YouReadTheScrollWith')
-            self.options = [
-                {'next': 'Atl_Confirm', 'text': 'Ln0528.0.option.ConfirmTheTruth'},
-            ]
-
-        if jump == 'Atl_Scroll' and 'ClassPhysician' in self.state:
-            self.say('Ln0545.0.text.YouReadTheScrollWith')
-            self.options = [
-                {'next': 'Atl_Confirm', 'text': 'Ln0528.0.option.ConfirmTheTruth'},
-            ]
-
-        if jump == 'Atl_Scroll' and 'ClassPoet' in self.state:
-            self.say('Ln0557.0.text.YouReadTheScrollWith')
-            self.options = [
-                {'next': 'Atl_Confirm', 'text': 'Ln0528.0.option.ConfirmTheTruth'},
-            ]
-
-        if jump == 'Atl_Scroll' and 'ClassScientist' in self.state:
-            self.say('Ln0569.0.text.YouReadTheScrollWith')
             self.options = [
                 {'next': 'Atl_Confirm', 'text': 'Ln0528.0.option.ConfirmTheTruth'},
             ]
@@ -529,15 +509,13 @@ class Atlantis:
 
         # IN THE HARBOUR
 
-        if jump == 'Atl_Hurry' and 'AtlantisMessengerYes' in self.state:
-            self.say('Ln0803.0.text.HurryingAsMuchAsPossible')
-            self.options = [
-                {'next': 'Atl_Speech', 'text': 'Ln0808.0.option.SpeakToTheCaptains'},
-                {'next': 'Atl_LoadShips', 'text': 'Ln0809.0.option.LoadTheShips'},
-            ]
+        if jump == 'Atl_Hurry':
+            if 'AtlantisMessengerYes' in self.state:
+                self.say('Ln0803.0.text.HurryingAsMuchAsPossible')
 
-        if jump == 'Atl_Hurry' and 'AtlantisMessengerNo' in self.state:
-            self.say('Ln0814.0.text.HurryingAsMuchAsPossible')
+            if 'AtlantisMessengerNo' in self.state:
+                self.say('Ln0814.0.text.HurryingAsMuchAsPossible')
+
             self.options = [
                 {'next': 'Atl_Speech', 'text': 'Ln0808.0.option.SpeakToTheCaptains'},
                 {'next': 'Atl_LoadShips', 'text': 'Ln0809.0.option.LoadTheShips'},
@@ -684,32 +662,22 @@ class Atlantis:
                 {'next': 'Atl_Land', 'text': 'Ln1119.0.option.FindANewHome'},
             ]
 
-        if jump == 'Atl_Land' and 'ClassFarmer' in self.state:
-            self.say('Ln1124.0.text.OneDayYouComeUpon')
-            self.options = [
-                {'next': 'MessageBoardInterface_On', 'text': 'Ln0039.0.option.IOpenMyEyes', 'short': 'Ln1047.0.short.End'},
-            ]
+        if jump == 'Atl_Land':
+            if 'ClassFarmer' in self.state:
+                self.say('Ln1124.0.text.OneDayYouComeUpon')
 
-        if jump == 'Atl_Land' and 'ClassMagician' in self.state:
-            self.say('Ln1142.0.text.OneDayYouComeUpon')
-            self.options = [
-                {'next': 'MessageBoardInterface_On', 'text': 'Ln0039.0.option.IOpenMyEyes', 'short': 'Ln1047.0.short.End'},
-            ]
+            if 'ClassMagician' in self.state:
+                self.say('Ln1142.0.text.OneDayYouComeUpon')
 
-        if jump == 'Atl_Land' and 'ClassPhysician' in self.state:
-            self.say('Ln1160.0.text.OneDayYouComeUpon')
-            self.options = [
-                {'next': 'MessageBoardInterface_On', 'text': 'Ln0039.0.option.IOpenMyEyes', 'short': 'Ln1047.0.short.End'},
-            ]
+            if 'ClassPhysician' in self.state:
+                self.say('Ln1160.0.text.OneDayYouComeUpon')
 
-        if jump == 'Atl_Land' and 'ClassPoet' in self.state:
-            self.say('Ln1178.0.text.OneDayYouComeUpon')
-            self.options = [
-                {'next': 'MessageBoardInterface_On', 'text': 'Ln0039.0.option.IOpenMyEyes', 'short': 'Ln1047.0.short.End'},
-            ]
+            if 'ClassPoet' in self.state:
+                self.say('Ln1178.0.text.OneDayYouComeUpon')
 
-        if jump == 'Atl_Land' and 'ClassScientist' in self.state:
-            self.say('Ln1196.0.text.OneDayYouComeUpon')
+            if 'ClassScientist' in self.state:
+                self.say('Ln1196.0.text.OneDayYouComeUpon')
+
             self.options = [
                 {'next': 'MessageBoardInterface_On', 'text': 'Ln0039.0.option.IOpenMyEyes', 'short': 'Ln1047.0.short.End'},
             ]
