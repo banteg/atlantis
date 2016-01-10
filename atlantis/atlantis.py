@@ -84,18 +84,20 @@ class Atlantis:
 
     async def flush(self):
         'Send all pending messages and a reply keyboard.'
+        queue = list(self.messages)
+        self.messages = []
         keyboard = {
             'keyboard': [[choice] for choice in self.choices],
             'resize_keyboard': True,
         }
 
-        while len(self.messages) > 1:
-            message = self.messages.pop(0)
+        while len(queue) > 1:
+            message = queue.pop(0)
             await self.typing(message)
             await self.bot.send_text(message)
 
-        if self.messages:
-            message = self.messages.pop(0)
+        if queue:
+            message = queue.pop(0)
             await self.typing(message)
             await self.bot.send_text(message, reply_markup=json.dumps(keyboard))
 
